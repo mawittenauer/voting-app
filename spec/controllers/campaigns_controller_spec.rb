@@ -7,6 +7,7 @@ describe CampaignsController do
       before do
         post :create, campaign_title: "Hillary vs. Trump", side_one_title: "Trump", side_two_title: "Hillary"
       end
+      
       it "creates a new campaign" do
         expect(Campaign.count).to eq(1)
       end
@@ -20,6 +21,23 @@ describe CampaignsController do
         expect(response).to redirect_to Campaign.first
       end
     end
-    context "with invalid input"
+    context "with invalid input" do
+      before do
+        post :create, campaign_title: "", side_one_title: "", side_two_title: ""
+      end
+      
+      it "doesn't create a new campaign" do
+        expect(Campaign.count).to eq(0)
+      end
+      it "doesn't create sides" do
+        expect(Side.count).to eq(0)
+      end
+      it "sets the flash danger message" do
+        expect(flash[:danger]).to be_present
+      end
+      it "renders the new template" do
+        expect(response).to render_template :new
+      end
+    end
   end
 end
