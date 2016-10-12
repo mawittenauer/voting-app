@@ -10,7 +10,9 @@ describe CampaignsController do
       it "creates a new campaign" do
         expect(Campaign.count).to eq(1)
       end
-      it "creates two sides"
+      it "creates two sides" do
+        expect(Side.count).to eq(2)
+      end
       it "associates both sides with the campaign"
       it "redirects to the campaign show page"
     end
