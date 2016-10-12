@@ -13,8 +13,12 @@ describe CampaignsController do
       it "creates two sides" do
         expect(Side.count).to eq(2)
       end
-      it "associates both sides with the campaign"
-      it "redirects to the campaign show page"
+      it "associates both sides with the campaign" do
+        expect(Side.first.campaign).to eq(Campaign.first)
+      end
+      it "redirects to the campaign show page" do
+        expect(response).to redirect_to Campaign.first
+      end
     end
     context "with invalid input"
   end
