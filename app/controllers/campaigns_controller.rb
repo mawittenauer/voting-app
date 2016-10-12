@@ -1,4 +1,10 @@
 class CampaignsController < ApplicationController
+  def show
+    @campaign = Campaign.find(params[:id])
+    @side_one = @campaign.sides.first
+    @side_two = @campaign.sides.second
+  end
+  
   def create
     campaign = Campaign.new(title: params[:campaign_title])
     side_one = Side.new(title: params[:side_one_title], campaign: campaign)
