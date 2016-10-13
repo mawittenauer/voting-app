@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
       flash[:success] = "You have successfully logged in!"
       redirect_to new_campaign_path
     else
-      
+      flash.now[:danger] = "There was a problem with your email/password."
+      render :new
     end
   end
 end

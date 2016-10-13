@@ -17,6 +17,17 @@ describe SessionsController do
       end
     end
     
-    context "with invalid credentials"
+    context "with invalid credentials" do
+      before { post :create, email: "mike@me.com", password: "pass" }
+      it "renders the new template" do
+        expect(response).to render_template :new
+      end
+      it "doesn't add a user to the session" do
+        expect(session[:user_id]).to_not be_present
+      end
+      it "sets the flash danger method" do
+        expect(flash[:danger]).to be_present
+      end
+    end
   end
 end
