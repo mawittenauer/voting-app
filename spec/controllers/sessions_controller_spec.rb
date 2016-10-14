@@ -30,4 +30,28 @@ describe SessionsController do
       end
     end
   end
+  
+  describe "GET destroy" do
+    context "with unauthenticated user" do
+      it "redirects to the sign in page" do
+        get :destroy
+        expect(response).to redirect_to sign_in_path
+      end
+    end
+    context "with authenticated user" do
+      before do 
+        session[:user_id] = Fabricate(:user).id
+        get :destroy
+      end
+      it "redirects to the sign in page" do
+        expect(response).to redirect_to sign_in_path
+      end
+      it "sets the flash success message" do
+        expect(flash[:success]).to be_present
+      end
+      it "removes the user from the session" do
+        expect(session[:user_id]).to_not be_present
+      end
+    end
+  end
 end
