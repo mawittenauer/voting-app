@@ -1,4 +1,6 @@
 class CampaignsController < ApplicationController
+  before_action :require_user
+  
   def show
     @campaign = Campaign.find(params[:id])
     @side_one = @campaign.sides.first

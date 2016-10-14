@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :campaigns, only: [:create, :show, :new]
   resources :users, only: [:create]
   get '/register', to: 'users#new'
-  post '/sign_on', to: 'sessions#create'
+  get '/sign_in', to: 'sessions#new'
+  post '/sign_in', to: 'sessions#create'
 end
