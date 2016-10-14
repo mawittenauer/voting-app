@@ -19,9 +19,18 @@
 @import "bootstrap";
 
 /********************
-GENERAL
+HEADER
 ********************/
 
-body {
-  margin-top: 40px;
+.navbar {
+  border-radius: 0;
+}
+
+.nav li {
+  float: left;
+}
+
+.nav {
+  float: right;
+  margin-right: 20px;
 }
