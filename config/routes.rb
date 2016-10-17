@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'pages#front'
   resources :campaigns, only: [:create, :show, :new]
   resources :users, only: [:create]
+  resources :votes, only: [:create]
   get '/register', to: 'users#new'
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'
