@@ -7,8 +7,12 @@
 .row
   .col-sm-6
     .well
-      %h2= @side_one.title
+      %h2 #{@side_one.title} (#{@side_one.votes.count})
+      %br
+      = link_to "Vote", votes_path(side_id: @side_one.id, campaign_id: @campaign.id), class: "btn btn-success", method: :post
     
   .col-sm-6
     .well
-      %h2= @side_two.title
+      %h2 #{@side_two.title} (#{@side_two.votes.count})
+      %br
+      = link_to "Vote", votes_path(side_id: @side_two.id, campaign_id: @campaign.id), class: "btn btn-success", method: :post
