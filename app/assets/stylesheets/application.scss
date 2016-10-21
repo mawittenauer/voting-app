@@ -18,11 +18,71 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$lightestblue: #ceebfb;
+$lightblue: #a3d6f5;
+$blue: #66a7c5;
+$red: #ee3233;
+$offwhite: #f0eceb;
+$grey: #6c7476;
+
+/********************
+GENERAL
+********************/
+
+.well, .jumbotron {
+  background-color: #fff;
+}
+
+.well {
+  border: none;
+}
+
+h1 {
+  font-family: 'Nunito', sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', sans-serif;
+  color: $blue;
+}
+
+p, a, input, label {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.blue-button, .red-button {
+  color: #fff;
+  border: none;
+}
+
+.blue-button:hover, .red-button:hover {
+  color: #fff;
+  background-color: $grey;
+}
+
+.red-button {
+  background-color: $red;
+}
+
+.blue-button {
+  background-color: $blue;
+}
+
 /********************
 HEADER
 ********************/
 
+.navbar-header ul.navbar-nav li a {
+  color: $grey;
+}
+
+.navbar-header a.navbar-brand {
+  color: $blue;
+}
+
 .navbar {
+  background-color: $lightestblue;
+  border: none;
   border-radius: 0;
 }
 

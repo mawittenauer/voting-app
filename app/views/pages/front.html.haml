@@ -1,1 +1,21 @@
-%h1 Front Page
+.row
+  .col-sm-12
+    .jumbotron.text-center
+      %h1 Voting App
+      %p Sign up to create campaigns and vote in others.
+      = link_to "Register", register_path, class: "btn btn-default red-button"
+      = link_to "Sign In", sign_in_path, class: "btn btn-success blue-button"
+      
+.row
+  .col-sm-4
+    .well
+      %h3 Create
+      %p Create campaigns for others to comment and vote on.
+  .col-sm-4
+    .well
+      %h3 Vote
+      %p Vote on other users campaigns to show your support.
+  .col-sm-4
+    .well
+      %h3 Comment
+      %p Voice your opinion on campaigns even after you vote.
