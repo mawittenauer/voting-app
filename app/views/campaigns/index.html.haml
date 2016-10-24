@@ -12,3 +12,6 @@
         %h2 #{campaign.title} (#{campaign.votes.count})
         %br
         = link_to "Enter", campaign, class: "btn btn-success"
+        
+.row
+  = will_paginate @campaigns
