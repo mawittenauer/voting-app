@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "You have successfully logged in!"
-      redirect_to new_campaign_path
+      redirect_to campaigns_path
     else
       flash.now[:danger] = "There was a problem with your email/password."
       render :new
