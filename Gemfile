@@ -16,6 +16,7 @@ gem 'fabrication'
 gem 'faker'
 gem 'puma'
 gem 'bcrypt'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

@@ -1,6 +1,10 @@
 class CampaignsController < ApplicationController
   before_action :require_user
   
+  def index
+    @campaigns = Campaign.paginate(:page => params[:page], :per_page => 10).order('votes_count DESC')
+  end
+  
   def show
     @campaign = Campaign.find(params[:id])
     @side_one = @campaign.sides.first
