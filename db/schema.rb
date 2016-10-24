@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017154858) do
+ActiveRecord::Schema.define(version: 20161024143139) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "votes_count", default: 0
   end
 
   create_table "sides", force: :cascade do |t|
