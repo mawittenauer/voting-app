@@ -2,6 +2,13 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe CampaignsController do
+  describe "GET index" do
+    it "redirects to the sign in page for unauthenticated users" do
+      get :index
+      expect(response).to redirect_to sign_in_path
+    end
+  end
+  
   describe "POST create" do
     context "with valid input" do
       let(:user) { Fabricate(:user) }
