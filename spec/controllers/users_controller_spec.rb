@@ -1,6 +1,8 @@
 require 'rails_helper'
 require 'spec_helper'
 
+INVALID_EMAILS = ['mike.com', '@hello.com', '.com', 'hello']
+
 describe UsersController do
   describe "GET new" do
     it "sets @user" do
@@ -40,6 +42,12 @@ describe UsersController do
         Fabricate(:user, email: "mike@me.com")
         post :create, user: { email: "mIkE@me.com", full_name: "Mike", password: "password" }
         expect(User.count).to eq(1)
+      end
+      it "doesn't allow invalid email address" do
+        INVALID_EMAILS.each do |email|
+          post :create, user: { email: email, full_name: "Mike", password: "password" }
+        end
+        expect(User.count).to eq(0)
       end
     end
   end
