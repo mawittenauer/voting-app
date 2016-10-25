@@ -13,7 +13,7 @@ describe SessionsController do
         expect(flash[:success]).to be_present
       end
       it "redirects to the new campaigns path" do
-        expect(response).to redirect_to new_campaign_path
+        expect(response).to redirect_to campaigns_path
       end
     end
     
