@@ -36,6 +36,11 @@ describe UsersController do
       it "sets the flash danger message" do
         expect(flash[:danger]).to be_present
       end
+      it "validates uniquness of email regardless of case" do
+        Fabricate(:user, email: "mike@me.com")
+        post :create, user: { email: "mIkE@me.com", full_name: "Mike", password: "password" }
+        expect(User.count).to eq(1)
+      end
     end
   end
 end
