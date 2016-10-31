@@ -20,6 +20,9 @@ describe UsersController do
       it "creates a new user" do
         expect(User.count).to eq(1)
       end
+      it "sends authentication email" do
+        
+      end
     end
     context "with invalid input" do
       before do
