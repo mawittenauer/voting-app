@@ -1,3 +1,4 @@
-%h1 Hello World
-= link_to "Activate Account", edit_authentication_path(@user.activation_token, email: @user.email)
+%h1 Welcome to Voting App
+%p Follow the link below to activate your account and start voting!
+= link_to "Activate Account", edit_authentication_url(@user.activation_token, email: @user.email)
     
