@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-      AuthenticationMailer.authentication_email(@user).deliver_later
+      AuthenticationMailer.authentication_email(@user).deliver_now
       flash[:success] = "You have successfully registered. Now sign in to start voting!"
       redirect_to sign_in_path
     else

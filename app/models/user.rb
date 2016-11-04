@@ -23,6 +23,17 @@ class User < ActiveRecord::Base
     BCrypt::Password.create(string, cost: cost)
   end
   
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+  
+  def activate
+    update_attribute("activated", true)
+    update_attribute("activated_at", Time.zone.now)
+  end
+  
   private
   
   def create_activation_digest
