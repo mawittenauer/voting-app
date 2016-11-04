@@ -4,7 +4,7 @@ require'spec_helper'
 describe SessionsController do
   describe "POST create" do
     context "with valid credentials" do
-      let(:user) { Fabricate(:user) }  
+      let(:user) { Fabricate(:user, activated: true) }  
       before { post :create, email: user.email, password: user.password }
       it "adds a user to the session" do
         expect(session[:user_id]).to eq(user.id)
