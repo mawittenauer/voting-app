@@ -4,10 +4,15 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     
-    if user && user.authenticate(params[:password]) && user.activated
-      session[:user_id] = user.id
-      flash[:success] = "You have successfully logged in!"
-      redirect_to campaigns_path
+    if user && user.authenticate(params[:password])
+      if user.activated?
+        session[:user_id] = user.id
+        flash[:success] = "You have successfully logged in!"
+        redirect_to campaigns_path
+      else
+        flash[:danger] = "Check your email to activate your account."
+        redirect_to sign_in_path
+      end
     else
       flash.now[:danger] = "There was a problem with your email/password."
       render :new
