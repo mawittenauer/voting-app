@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025132120) do
+ActiveRecord::Schema.define(version: 20161212223506) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "votes_count", default: 0
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sides", force: :cascade do |t|
@@ -33,6 +41,9 @@ ActiveRecord::Schema.define(version: 20161025132120) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
