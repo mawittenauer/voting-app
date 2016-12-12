@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#front'
-  resources :campaigns, only: [:create, :show, :new, :index]
+  resources :campaigns, only: [:create, :show, :new, :index] do
+    resources :comments, only: [:create]
+  end
   resources :users, only: [:create]
   resources :votes, only: [:create]
   get '/register', to: 'users#new'
