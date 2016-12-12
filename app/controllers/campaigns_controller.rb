@@ -9,6 +9,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @side_one = @campaign.sides.first
     @side_two = @campaign.sides.second
+    @comments = @campaign.comments
   end
   
   def create
