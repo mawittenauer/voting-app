@@ -19,8 +19,15 @@
       
 .row
   .col-sm-12
+    .well
+      = bootstrap_form_tag url: campaign_comments_path(@campaign, @comment) do |f|
+        = f.text_area :content, label: "Comment"
+        = f.submit "Leave Comment"
+      
+.row
+  .col-sm-12
     %h2 Comments:
-    - @comments.each do |comment|
+    - @comments.each do |c|
       .well
-        %p= comment.content
-        %em posted by: #{comment.user.email} #{time_ago_in_words(comment.created_at)} ago
+        %p= c.content
+        %em posted by: #{c.user.email} #{time_ago_in_words(c.created_at)} ago

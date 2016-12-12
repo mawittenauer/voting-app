@@ -10,6 +10,7 @@ class CampaignsController < ApplicationController
     @side_one = @campaign.sides.first
     @side_two = @campaign.sides.second
     @comments = @campaign.comments
+    @comment = Comment.new
   end
   
   def create
